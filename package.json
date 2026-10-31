@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build && node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
+    "dev": "node -e \"require('fs').copyFileSync('index.template.html', 'index.html')\" && vite",
+    "prebuild": "node -e \"require('fs').copyFileSync('index.template.html', 'index.html')\"",
+    "build": "tsc -b && vite build",
+    "postbuild": "node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html'); require('fs').copyFileSync('dist/index.html', 'index.html'); require('fs').copyFileSync('dist/404.html', '404.html'); require('fs').cpSync('dist/assets', 'assets', {recursive: true}); require('fs').cpSync('dist/images', 'images', {recursive: true})\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "lint": "oxlint",

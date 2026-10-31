@@ -5,4 +5,13 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   base: '/superpowerproject/',
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/[name].js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]',
+      },
+    },
+  },
 })
