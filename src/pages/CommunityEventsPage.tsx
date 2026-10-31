@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SectionHeading from '../components/SectionHeading';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function CommunityEventsPage() {
   const elements = [
@@ -96,7 +97,7 @@ export default function CommunityEventsPage() {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                 <img
-                  src="/images/community/community-workshop.jpg"
+                  src={asset('/images/community/community-workshop.jpg')}
                   alt="Community members participating in an AI discovery event"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -121,7 +122,7 @@ export default function CommunityEventsPage() {
             <div className="lg:col-span-6 space-y-4">
               <div className="relative rounded-2xl overflow-hidden shadow-lg border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/community/facilitator-demonstration.jpg"
+                  src={asset('/images/community/facilitator-demonstration.jpg')}
                   alt="Facilitator demonstrating live AI capabilities to the room"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -161,7 +162,7 @@ export default function CommunityEventsPage() {
             <div className="lg:col-span-5">
               <div className="rounded-xl overflow-hidden shadow-md border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/community/social-discovery.jpg"
+                  src={asset('/images/community/social-discovery.jpg')}
                   alt="Participants enjoying shared social discovery"
                   className="w-full h-full object-cover"
                   loading="lazy"

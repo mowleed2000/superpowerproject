@@ -3,48 +3,49 @@ import { ArrowRight, Compass, Palette, BookOpen, MessageSquare, CheckCircle2, Gl
 import SEO from '../components/SEO';
 import SectionHeading from '../components/SectionHeading';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function HomePage() {
   const capabilities = [
     {
       title: "Discover",
       description: "Identify unfamiliar things, explore questions and find answers to everyday curiosities.",
-      image: "/images/capabilities/capability-object-discovery.webp",
+      image: asset('/images/capabilities/capability-object-discovery.webp'),
       icon: Compass,
       tag: "Exploration",
     },
     {
       title: "Create",
       description: "Explore photography, writing, artwork, stories and personal projects.",
-      image: "/images/capabilities/capability-memories.webp",
+      image: asset('/images/capabilities/capability-memories.webp'),
       icon: Palette,
       tag: "Creativity",
     },
     {
       title: "Learn",
       description: "Explore new subjects, practise languages and develop knowledge.",
-      image: "/images/capabilities/capability-learning.webp",
+      image: asset('/images/capabilities/capability-learning.webp'),
       icon: BookOpen,
       tag: "Knowledge",
     },
     {
       title: "Connect",
       description: "Communicate, translate, prepare conversations and express yourself.",
-      image: "/images/capabilities/capability-communication.webp",
+      image: asset('/images/capabilities/capability-communication.webp'),
       icon: MessageSquare,
       tag: "Communication",
     },
     {
       title: "Accomplish",
       description: "Plan activities, organise information and solve practical problems.",
-      image: "/images/homepage/everyday-discovery.jpg",
+      image: asset('/images/homepage/everyday-discovery.jpg'),
       icon: CheckCircle2,
       tag: "Practical",
     },
     {
       title: "Explore",
       description: "Discover destinations, research interests and investigate opportunities.",
-      image: "/images/personal/travel-exploration.jpg",
+      image: asset('/images/personal/travel-exploration.jpg'),
       icon: Globe,
       tag: "Curiosity",
     },
@@ -72,21 +73,21 @@ export default function HomePage() {
     {
       title: "Community Events",
       description: "An engaging introduction to the possibilities of AI, designed to bring people together through discovery and participation.",
-      image: "/images/community/community-workshop.jpg",
+      image: asset('/images/community/community-workshop.jpg'),
       link: "/community-events",
       cta: "Explore community events",
     },
     {
       title: "Group Programmes",
       description: "Regular shared experiences where participants explore practical AI applications, develop interests and discover new capabilities together.",
-      image: "/images/community/group-interaction.jpg",
+      image: asset('/images/community/group-interaction.jpg'),
       link: "/group-programmes",
       cta: "Explore group programmes",
     },
     {
       title: "Personal Sessions",
       description: "Individual guidance built around your interests, ambitions and circumstances.",
-      image: "/images/personal/personal-ai-session.jpg",
+      image: asset('/images/personal/personal-ai-session.jpg'),
       link: "/personal-sessions",
       cta: "Explore personal sessions",
     },
@@ -159,7 +160,7 @@ export default function HomePage() {
                   aria-hidden="true"
                 >
                   <img
-                    src="/images/brand/superpower-abstract-world.webp"
+                    src={asset('/images/brand/superpower-abstract-world.webp')}
                     alt=""
                     className="w-full h-full object-cover"
                   />
@@ -168,7 +169,7 @@ export default function HomePage() {
                 {/* Primary Hero Photograph */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3]">
                   <img
-                    src="/images/homepage/hero-community-discovery.jpg"
+                    src={asset('/images/homepage/hero-community-discovery.jpg')}
                     alt="Community participants exploring AI capabilities together in a welcoming group setting"
                     className="w-full h-full object-cover"
                     loading="eager"
@@ -201,7 +202,7 @@ export default function HomePage() {
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/homepage/everyday-discovery.jpg"
+                  src={asset('/images/homepage/everyday-discovery.jpg')}
                   alt="Practical everyday AI exploration and learning"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -441,7 +442,7 @@ export default function HomePage() {
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/community/social-discovery.jpg"
+                  src={asset('/images/community/social-discovery.jpg')}
                   alt="People collaborating and exploring ideas together"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -459,7 +460,7 @@ export default function HomePage() {
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/organisations/community-venue.jpg"
+                  src={asset('/images/organisations/community-venue.jpg')}
                   alt="Community venue for hosting AI discovery workshops"
                   className="w-full h-full object-cover"
                   loading="lazy"

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { asset } from '../utils/asset';
 
 interface CTASectionProps {
   headline?: string;
@@ -23,7 +24,7 @@ export default function CTASection({
       {/* Decorative subtle pattern */}
       <div
         className="absolute inset-0 opacity-5 pointer-events-none bg-cover bg-center"
-        style={{ backgroundImage: `url('/images/brand/superpower-abstract-world.webp')` }}
+        style={{ backgroundImage: `url('${asset('/images/brand/superpower-abstract-world.webp')}')` }}
         aria-hidden="true"
       />
 

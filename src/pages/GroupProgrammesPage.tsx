@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SectionHeading from '../components/SectionHeading';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function GroupProgrammesPage() {
   const elements = [
@@ -81,7 +82,7 @@ export default function GroupProgrammesPage() {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                 <img
-                  src="/images/community/group-interaction.jpg"
+                  src={asset('/images/community/group-interaction.jpg')}
                   alt="Participants engaging in a collaborative group programme"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -130,7 +131,7 @@ export default function GroupProgrammesPage() {
               {/* Image 1: social-discovery.jpg */}
               <div className="sm:col-span-2 rounded-2xl overflow-hidden border border-surface-border shadow-sm aspect-[16/9]">
                 <img
-                  src="/images/community/social-discovery.jpg"
+                  src={asset('/images/community/social-discovery.jpg')}
                   alt="Learning together in a welcoming peer environment"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -140,7 +141,7 @@ export default function GroupProgrammesPage() {
               {/* Image 2: capability-learning.webp */}
               <div className="rounded-2xl overflow-hidden border border-surface-border shadow-sm aspect-[4/3] bg-ivory">
                 <img
-                  src="/images/capabilities/capability-learning.webp"
+                  src={asset('/images/capabilities/capability-learning.webp')}
                   alt="Capability: Structured learning and knowledge exploration"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -150,7 +151,7 @@ export default function GroupProgrammesPage() {
               {/* Image 3: capability-memories.webp */}
               <div className="rounded-2xl overflow-hidden border border-surface-border shadow-sm aspect-[4/3] bg-ivory">
                 <img
-                  src="/images/capabilities/capability-memories.webp"
+                  src={asset('/images/capabilities/capability-memories.webp')}
                   alt="Capability: Creative storytelling and personal projects"
                   className="w-full h-full object-cover"
                   loading="lazy"

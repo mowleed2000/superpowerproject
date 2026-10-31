@@ -3,6 +3,7 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SectionHeading from '../components/SectionHeading';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function AboutPage() {
   const philosophies = [
@@ -64,7 +65,7 @@ export default function AboutPage() {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-square max-w-md mx-auto bg-white p-4">
                 <img
-                  src="/images/brand/superpower-abstract-world.webp"
+                  src={asset('/images/brand/superpower-abstract-world.webp')}
                   alt="Conceptual visualization of human capability and discovery"
                   className="w-full h-full object-cover rounded-xl"
                   loading="eager"
@@ -115,7 +116,7 @@ export default function AboutPage() {
             <div className="lg:col-span-6 space-y-6">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/community/social-discovery.jpg"
+                  src={asset('/images/community/social-discovery.jpg')}
                   alt="Discovery together: shared exploration in a welcoming environment"
                   className="w-full h-full object-cover"
                   loading="lazy"

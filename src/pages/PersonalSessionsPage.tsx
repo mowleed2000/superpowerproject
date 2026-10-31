@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SectionHeading from '../components/SectionHeading';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function PersonalSessionsPage() {
   const steps = [
@@ -76,7 +77,7 @@ export default function PersonalSessionsPage() {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                 <img
-                  src="/images/personal/personal-ai-session.jpg"
+                  src={asset('/images/personal/personal-ai-session.jpg')}
                   alt="Personal one-to-one AI session with patient guidance"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -102,7 +103,7 @@ export default function PersonalSessionsPage() {
             <div className="bg-ivory rounded-2xl overflow-hidden border border-surface-border shadow-sm flex flex-col group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="/images/personal/creative-capability.jpg"
+                  src={asset('/images/personal/creative-capability.jpg')}
                   alt="Creative capability and personal artwork projects"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
@@ -121,7 +122,7 @@ export default function PersonalSessionsPage() {
             <div className="bg-ivory rounded-2xl overflow-hidden border border-surface-border shadow-sm flex flex-col group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="/images/personal/personal-memories.jpg"
+                  src={asset('/images/personal/personal-memories.jpg')}
                   alt="Restoring and preserving family memories and photographs"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
@@ -140,7 +141,7 @@ export default function PersonalSessionsPage() {
             <div className="bg-ivory rounded-2xl overflow-hidden border border-surface-border shadow-sm flex flex-col group">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
-                  src="/images/personal/travel-exploration.jpg"
+                  src={asset('/images/personal/travel-exploration.jpg')}
                   alt="Curating travel exploration and destination research"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"

@@ -3,13 +3,14 @@ import { ArrowRight, Users, UsersRound, UserCheck, CheckCircle2 } from 'lucide-r
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function ProgrammesPage() {
   const programmes = [
     {
       title: "Community Events",
       tagline: "An engaging introduction to live AI exploration",
-      image: "/images/community/community-workshop.jpg",
+      image: asset('/images/community/community-workshop.jpg'),
       link: "/community-events",
       icon: Users,
       audience: "Community centres, libraries, local groups and members of the public seeking an inspiring first look.",
@@ -26,7 +27,7 @@ export default function ProgrammesPage() {
     {
       title: "Group Programmes",
       tagline: "Shared discovery cohorts building capabilities over time",
-      image: "/images/community/group-interaction.jpg",
+      image: asset('/images/community/group-interaction.jpg'),
       link: "/group-programmes",
       icon: UsersRound,
       audience: "Individuals and groups who want regular, structured opportunities to practice AI together.",
@@ -43,7 +44,7 @@ export default function ProgrammesPage() {
     {
       title: "Personal Sessions",
       tagline: "Individual guidance built around what matters to you",
-      image: "/images/personal/personal-ai-session.jpg",
+      image: asset('/images/personal/personal-ai-session.jpg'),
       link: "/personal-sessions",
       icon: UserCheck,
       audience: "Individuals who want 1-to-1 attention focused on specific personal projects, curiosities, or transition goals.",

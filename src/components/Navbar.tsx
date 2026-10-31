@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { asset } from '../utils/asset';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -80,7 +81,7 @@ export default function Navbar() {
             aria-label="The Superpower Project Home"
           >
             <img
-              src="/images/brand/superpower-project-logo.svg"
+              src={asset('/images/brand/superpower-project-logo.svg')}
               alt="The Superpower Project"
               className="h-9 sm:h-10 w-auto object-contain transition-transform group-hover:opacity-90"
               width="240"

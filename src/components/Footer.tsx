@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { asset } from '../utils/asset';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,7 +9,7 @@ export default function Footer() {
       {/* Subtle decorative background pattern */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none bg-repeat bg-center"
-        style={{ backgroundImage: `url('/images/brand/programme-pattern.webp')` }}
+        style={{ backgroundImage: `url('${asset('/images/brand/programme-pattern.webp')}')` }}
         aria-hidden="true"
       />
 
@@ -18,7 +19,7 @@ export default function Footer() {
           <div className="lg:col-span-5 space-y-5">
             <Link to="/" className="inline-block" aria-label="The Superpower Project Home">
               <img
-                src="/images/brand/superpower-project-logo.svg"
+                src={asset('/images/brand/superpower-project-logo.svg')}
                 alt="The Superpower Project"
                 className="h-10 w-auto object-contain brightness-0 invert"
                 width="220"

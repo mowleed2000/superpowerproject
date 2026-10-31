@@ -3,6 +3,7 @@ import { ArrowRight, Building2, CheckCircle2, Info } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import SectionHeading from '../components/SectionHeading';
+import { asset } from '../utils/asset';
 
 export default function OrganisationsPage() {
   const [formData, setFormData] = useState({
@@ -128,7 +129,7 @@ export default function OrganisationsPage() {
             <div className="lg:col-span-5">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                 <img
-                  src="/images/organisations/institutional-partnership.jpg"
+                  src={asset('/images/organisations/institutional-partnership.jpg')}
                   alt="Institutional partnership in progress"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -164,7 +165,7 @@ export default function OrganisationsPage() {
             <div className="lg:col-span-6">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/organisations/community-impact.jpg"
+                  src={asset('/images/organisations/community-impact.jpg')}
                   alt="Positive community participation and impact"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -182,7 +183,7 @@ export default function OrganisationsPage() {
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
                 <img
-                  src="/images/organisations/community-venue.jpg"
+                  src={asset('/images/organisations/community-venue.jpg')}
                   alt="Community venue for hosting AI events"
                   className="w-full h-full object-cover"
                   loading="lazy"

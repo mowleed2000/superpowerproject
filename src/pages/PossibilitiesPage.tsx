@@ -3,13 +3,14 @@ import { ArrowRight, AlertTriangle, Sparkles, Compass, Palette, BookOpen, Clock,
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 import CTASection from '../components/CTASection';
+import { asset } from '../utils/asset';
 
 export default function PossibilitiesPage() {
   const categories = [
     {
       id: "discovery",
       title: "Discovery",
-      image: "/images/capabilities/capability-object-discovery.webp",
+      image: asset('/images/capabilities/capability-object-discovery.webp'),
       icon: Compass,
       description: "Identify unfamiliar objects, understand puzzling symbols, and satisfy everyday curiosities instantly using multimodal vision.",
       examples: [
@@ -22,7 +23,7 @@ export default function PossibilitiesPage() {
     {
       id: "creativity",
       title: "Creativity",
-      image: "/images/capabilities/capability-memories.webp",
+      image: asset('/images/capabilities/capability-memories.webp'),
       icon: Palette,
       description: "Unleash imaginative artwork, poetry, and storytelling without needing formal fine arts or draftsmanship training.",
       examples: [
@@ -35,7 +36,7 @@ export default function PossibilitiesPage() {
     {
       id: "memories",
       title: "Memories & Heritage",
-      image: "/images/personal/personal-memories.jpg",
+      image: asset('/images/personal/personal-memories.jpg'),
       icon: Sparkles,
       description: "Preserve cherished family heritage, restore fragile photographs, and document personal life stories for posterity.",
       examples: [
@@ -48,7 +49,7 @@ export default function PossibilitiesPage() {
     {
       id: "learning",
       title: "Learning & Knowledge",
-      image: "/images/capabilities/capability-learning.webp",
+      image: asset('/images/capabilities/capability-learning.webp'),
       icon: BookOpen,
       description: "Explore complex academic topics, master languages at your own speed, and ask infinite questions without hesitation.",
       examples: [
@@ -61,7 +62,7 @@ export default function PossibilitiesPage() {
     {
       id: "everyday",
       title: "Everyday Life",
-      image: "/images/homepage/everyday-discovery.jpg",
+      image: asset('/images/homepage/everyday-discovery.jpg'),
       icon: Clock,
       description: "Organise daily routines, plan nutritious meals from leftover pantry ingredients, and demystify official bureaucracy.",
       examples: [
@@ -74,7 +75,7 @@ export default function PossibilitiesPage() {
     {
       id: "travel",
       title: "Travel & Exploration",
-      image: "/images/personal/travel-exploration.jpg",
+      image: asset('/images/personal/travel-exploration.jpg'),
       icon: Globe,
       description: "Research trips tailored to your exact physical mobility, dietary preferences, and personal historical interests.",
       examples: [
@@ -87,7 +88,7 @@ export default function PossibilitiesPage() {
     {
       id: "communication",
       title: "Communication",
-      image: "/images/capabilities/capability-communication.webp",
+      image: asset('/images/capabilities/capability-communication.webp'),
       icon: MessageSquare,
       description: "Overcome writer's block, translate between languages effortlessly, and prepare for difficult conversations.",
       examples: [
@@ -100,7 +101,7 @@ export default function PossibilitiesPage() {
     {
       id: "projects",
       title: "Personal Projects",
-      image: "/images/personal/creative-capability.jpg",
+      image: asset('/images/personal/creative-capability.jpg'),
       icon: Briefcase,
       description: "Bring ambitious personal goals to fruition with step-by-step project planning and creative problem solving.",
       examples: [
