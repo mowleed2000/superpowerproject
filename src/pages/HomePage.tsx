@@ -1,244 +1,290 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Compass, Palette, BookOpen, MessageSquare, CheckCircle2, Globe } from 'lucide-react';
+import { Building2, User, Sparkles, ArrowRight, CheckCircle2, ShieldCheck, FileCheck2, Heart, Gift, ChevronRight, Award } from 'lucide-react';
 import SEO from '../components/SEO';
-import SectionHeading from '../components/SectionHeading';
-import CTASection from '../components/CTASection';
 import { asset } from '../utils/asset';
 
 export default function HomePage() {
   const capabilities = [
     {
-      title: "Discover",
-      description: "Identify unfamiliar things, explore questions and find answers to everyday curiosities.",
-      image: asset('/images/capabilities/capability-object-discovery.webp'),
-      icon: Compass,
-      tag: "Exploration",
+      title: 'Life Stories & Memoirs',
+      desc: 'Turn childhood memories, military service, and career milestones into illustrated chapters.',
+      image: asset('/images/personal/personal-memories.jpg'),
+      link: '/possibilities#memoirs',
     },
     {
-      title: "Create",
-      description: "Explore photography, writing, artwork, stories and personal projects.",
-      image: asset('/images/capabilities/capability-memories.webp'),
-      icon: Palette,
-      tag: "Creativity",
+      title: 'Watercolour & Fine Art',
+      desc: 'Describe a beloved garden, pet, or landscape and watch original artwork painted by voice.',
+      image: asset('/images/personal/creative-capability.jpg'),
+      link: '/possibilities#visual-art',
     },
     {
-      title: "Learn",
-      description: "Explore new subjects, practise languages and develop knowledge.",
+      title: 'Care Home Reminiscence',
+      desc: 'Revisit 1950s hometown streets, historic steam trains, and childhood radio broadcasts.',
+      image: asset('/images/community/social-discovery.jpg'),
+      link: '/possibilities#travel-geography',
+    },
+    {
+      title: 'Lifelong Curiosities',
+      desc: 'Investigate deep historical questions, world languages, or family origin mysteries without jargon.',
       image: asset('/images/capabilities/capability-learning.webp'),
-      icon: BookOpen,
-      tag: "Knowledge",
-    },
-    {
-      title: "Connect",
-      description: "Communicate, translate, prepare conversations and express yourself.",
-      image: asset('/images/capabilities/capability-communication.webp'),
-      icon: MessageSquare,
-      tag: "Communication",
-    },
-    {
-      title: "Accomplish",
-      description: "Plan activities, organise information and solve practical problems.",
-      image: asset('/images/homepage/everyday-discovery.jpg'),
-      icon: CheckCircle2,
-      tag: "Practical",
-    },
-    {
-      title: "Explore",
-      description: "Discover destinations, research interests and investigate opportunities.",
-      image: asset('/images/personal/travel-exploration.jpg'),
-      icon: Globe,
-      tag: "Curiosity",
-    },
-  ];
-
-  const steps = [
-    {
-      number: "01",
-      title: "Bring your curiosity.",
-      description: "You don't need to arrive with technical knowledge or a particular skill. Start with an interest, question, problem or ambition.",
-    },
-    {
-      number: "02",
-      title: "Explore what AI makes possible.",
-      description: "Discover practical applications with guidance and support. Experiment, ask questions and see what you can accomplish.",
-    },
-    {
-      number: "03",
-      title: "Develop your capabilities.",
-      description: "Build confidence through experience, discover new interests and find ways to keep using what you've learned.",
-    },
-  ];
-
-  const experiences = [
-    {
-      title: "Community Events",
-      description: "An engaging introduction to the possibilities of AI, designed to bring people together through discovery and participation.",
-      image: asset('/images/community/community-workshop.jpg'),
-      link: "/community-events",
-      cta: "Explore community events",
-    },
-    {
-      title: "Group Programmes",
-      description: "Regular shared experiences where participants explore practical AI applications, develop interests and discover new capabilities together.",
-      image: asset('/images/community/group-interaction.jpg'),
-      link: "/group-programmes",
-      cta: "Explore group programmes",
-    },
-    {
-      title: "Personal Sessions",
-      description: "Individual guidance built around your interests, ambitions and circumstances.",
-      image: asset('/images/personal/personal-ai-session.jpg'),
-      link: "/personal-sessions",
-      cta: "Explore personal sessions",
+      link: '/possibilities#lifelong-learning',
     },
   ];
 
   return (
     <>
       <SEO
-        title="The Superpower Project | Discover What You're Capable Of"
-        description="Discover practical, personal and social AI experiences designed to help people learn, create, explore and develop new capabilities."
+        title="The Superpower Project | Artificial Intelligence for Older Adults & Care Homes"
+        description="Structured, patient, fully facilitated AI experiences for residential care homes, older adults, and families. Reignite memories, spark creative joy, and build confidence."
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-ivory pt-8 pb-16 md:pt-14 md:pb-24 lg:pt-20 lg:pb-32 border-b border-surface-border">
-        {/* Subtle decorative background */}
+      <section className="relative bg-navy text-white overflow-hidden py-16 lg:py-24 border-b border-navy-light">
         <div
-          className="absolute -right-20 -top-20 w-96 h-96 opacity-10 pointer-events-none rounded-full blur-3xl bg-cobalt"
-          aria-hidden="true"
+          className="absolute inset-0 opacity-10 bg-cover bg-center pointer-events-none"
+          style={{ backgroundImage: `url('${asset('/images/brand/programme-pattern.webp')}')` }}
         />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Hero Column */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-softblue/70 border border-cobalt/20 text-cobalt text-xs font-bold tracking-wider uppercase">
-                <span>The Superpower Project</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-softblue/10 border border-softblue/30 text-softblue text-xs font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5" />
+                Age is experience. AI is amplification.
               </div>
-              
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-navy tracking-tight leading-[1.08]">
-                Discover what you're <span className="text-cobalt">capable of</span>.
+
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                Artificial Intelligence for Older Adults — Not Lessons. <span className="text-softblue">Experiences.</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-body leading-relaxed max-w-2xl">
-                Artificial intelligence is opening up new ways to learn, create, explore and accomplish things.
+              <p className="text-lg sm:text-xl text-gray-200 leading-relaxed max-w-2xl">
+                We bring stimulating, patient, fully facilitated AI discovery sessions into residential care homes and private homes. Reignite cherished memories, spark creative joy, and explore what modern technology can do for you.
               </p>
 
-              <p className="text-base sm:text-lg text-body-muted leading-relaxed max-w-2xl">
-                We help people discover those possibilities through practical experiences, personal guidance and shared discovery.
-              </p>
-
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              {/* Dual Primary Doors */}
+              <div className="pt-2 flex flex-col sm:flex-row gap-4">
                 <Link
-                  to="/programmes"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-cobalt text-white font-semibold hover:bg-cobalt-hover shadow-md hover:shadow-lg transition-all duration-200"
+                  to="/care-homes"
+                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white font-bold text-base shadow-lg shadow-cobalt/25 transition-all duration-200"
                 >
-                  <span>Explore our programmes</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <Building2 className="w-5 h-5 mr-2" />
+                  For Care Homes &amp; Providers
                 </Link>
                 <Link
-                  to="/organisations"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white text-navy font-semibold hover:bg-ivory-dark border border-surface-border transition-all duration-200 shadow-sm"
+                  to="/pricing"
+                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-base transition-colors"
                 >
-                  Host an experience
+                  <User className="w-5 h-5 mr-2 text-softblue" />
+                  Personal Sessions (from £49)
                 </Link>
               </div>
 
-              {/* Supporting Credibility Note */}
-              <div className="pt-4 flex items-center gap-3 text-xs text-body-muted">
-                <span className="w-2 h-2 rounded-full bg-amber"></span>
-                <span>Age is experience. AI is amplification. Practical, human-centred capability building.</span>
-              </div>
-            </div>
-
-            {/* Right Hero Composition */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Abstract World Accent Background */}
-                <div
-                  className="absolute -top-6 -right-6 w-32 h-32 md:w-48 md:h-48 rounded-2xl overflow-hidden opacity-30 pointer-events-none hidden sm:block border border-cobalt/20 shadow-sm"
-                  aria-hidden="true"
-                >
-                  <img
-                    src={asset('/images/brand/superpower-abstract-world.webp')}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
+              {/* Trust Strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-navy-light/60 text-xs text-gray-300">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-softblue flex-shrink-0" />
+                  <span>Turnkey delivery</span>
                 </div>
-
-                {/* Primary Hero Photograph */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3]">
-                  <img
-                    src={asset('/images/homepage/hero-community-discovery.jpg')}
-                    alt="Community participants exploring AI capabilities together in a welcoming group setting"
-                    className="w-full h-full object-cover"
-                    loading="eager"
-                    width="1200"
-                    height="900"
-                  />
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-softblue flex-shrink-0" />
+                  <span>Enhanced DBS checked</span>
                 </div>
-
-                {/* Floating Stat/Accent badge */}
-                <div className="absolute -bottom-5 -left-4 sm:left-4 bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl shadow-lg border border-surface-border flex items-center gap-3 max-w-xs">
-                  <div className="w-10 h-10 rounded-lg bg-softblue flex items-center justify-center text-cobalt flex-shrink-0 font-bold">
-                    AI
-                  </div>
-                  <div className="text-xs">
-                    <p className="font-bold text-navy">Human Capability First</p>
-                    <p className="text-body-muted">Real interests, personal guidance</p>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Award className="w-4 h-4 text-softblue flex-shrink-0" />
+                  <span>£5M Public Liability</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FileCheck2 className="w-4 h-4 text-softblue flex-shrink-0" />
+                  <span>CQC Evidence Ready</span>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Section 2 — The Idea */}
-      <section className="py-20 md:py-28 bg-white border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Image side */}
-            <div className="lg:col-span-6 order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
+            <div className="lg:col-span-5">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 bg-navy-light">
                 <img
-                  src={asset('/images/homepage/everyday-discovery.jpg')}
-                  alt="Practical everyday AI exploration and learning"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  width="1000"
-                  height="750"
+                  src={asset('/images/homepage/hero-community-discovery.jpg')}
+                  alt="An older adult discovering generative AI with a facilitator"
+                  className="w-full h-[420px] object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent flex flex-col justify-end p-6">
+                  <span className="text-xs font-bold uppercase tracking-wider text-softblue mb-1">
+                    Hands-On Discovery
+                  </span>
+                  <p className="text-white text-sm font-semibold">
+                    No tech background needed. We guide every step with dignity, warmth, and patience.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison: More Than Technology Lessons */}
+      <section className="py-16 lg:py-24 bg-white border-b border-surface-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-cobalt">
+              A Fundamentally Different Approach
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+              More Than Technology Lessons
+            </h2>
+            <p className="text-base sm:text-lg text-body-muted leading-relaxed">
+              Most digital initiatives for older adults focus on rote device training. We do the opposite: we handle the technology entirely so participants can experience the thrill of creation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Column A: Traditional IT */}
+            <div className="p-8 rounded-3xl bg-gray-50 border border-gray-200 space-y-5">
+              <span className="inline-block px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-bold uppercase">
+                Traditional Digital Skills Classes
+              </span>
+              <ul className="space-y-4 text-sm text-gray-600">
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-base">✕</span>
+                  <span>Heavy focus on passwords, menus, settings, and updates</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-base">✕</span>
+                  <span>Requires memorising multi-step technical instructions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-base">✕</span>
+                  <span>Frustrating for arthritic fingers or tremor difficulties</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-500 font-bold text-base">✕</span>
+                  <span>Feels like a school test where people fear making mistakes</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column B: The Superpower Project */}
+            <div className="p-8 rounded-3xl bg-softblue/15 border-2 border-cobalt shadow-md space-y-5">
+              <span className="inline-block px-3 py-1 rounded-full bg-cobalt text-white text-xs font-bold uppercase tracking-wider">
+                The Superpower Project Experience
+              </span>
+              <ul className="space-y-4 text-sm text-navy font-medium">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cobalt flex-shrink-0" />
+                  <span>Zero passwords, logins, or tech homework required</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cobalt flex-shrink-0" />
+                  <span>Voice-led prompting: speak your memories, hear them amplified</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cobalt flex-shrink-0" />
+                  <span>Facilitator operates all physical devices and software</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-cobalt flex-shrink-0" />
+                  <span>Tangible keepsakes: beautiful prints, poems, and stories to keep</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dual Market Showcase Panels */}
+      <section className="py-16 lg:py-24 bg-ivory border-b border-surface-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-cobalt">
+              Choose Your Pathway
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy">
+              Two Dedicated Offerings
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Panel 1: Care Homes */}
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-surface-border shadow-sm flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-softblue/20 text-cobalt text-xs font-bold uppercase">
+                  <Building2 className="w-3.5 h-3.5" />
+                  For Care Homes &amp; Providers
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-navy">
+                  Stimulating Resident Activities That Spark Wonder
+                </h3>
+                <p className="text-sm text-body leading-relaxed">
+                  Turnkey group and 1-to-1 bedside sessions tailored for care homes. We bring large displays, soundscapes, and 5G cellular connection. Evidenced for CQC Wellbeing KLOEs with zero staff setup burden.
+                </p>
+                <div className="space-y-2 text-xs text-body pt-2 border-t border-surface-border">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Discovery Half-Day events &amp; recurring series</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Dementia-inclusive &amp; sensory reminiscence</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Written engagement logs for care inspections</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link
+                  to="/care-homes"
+                  className="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white font-bold text-sm shadow-md transition-colors"
+                >
+                  Explore Care Home Offerings
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
               </div>
             </div>
 
-            {/* Editorial Content side */}
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-              <SectionHeading
-                eyebrow="The Idea"
-                title="More than technology. More possibilities."
-              />
-              <div className="space-y-4 text-base sm:text-lg text-body leading-relaxed">
-                <p>
-                  AI is changing what people can do.
+            {/* Panel 2: Older Adults & Families */}
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-surface-border shadow-sm flex flex-col justify-between space-y-6">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-bold uppercase">
+                  <Heart className="w-3.5 h-3.5 text-purple-700" />
+                  For Older Adults &amp; Families
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-navy">
+                  Personal 1-to-1 Sessions Built Around What You Love
+                </h3>
+                <p className="text-sm text-body leading-relaxed">
+                  Patient, friendly 1-to-1 discovery sessions delivered in your home across London or online nationwide. Transparent pricing starting from £49, with elegant gift packages for parents.
                 </p>
-                <p>
-                  It can help you explore a new interest, understand something unfamiliar, create something original, solve an everyday problem or pursue an ambition.
-                </p>
-                <p>
-                  But knowing that these capabilities exist is only the beginning.
-                </p>
-                <p className="text-navy font-medium">
-                  The Superpower Project brings people and AI together through experiences designed around real interests, practical applications and human connection.
-                </p>
+                <div className="space-y-2 text-xs text-body pt-2 border-t border-surface-border">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-cobalt flex-shrink-0" />
+                    <span>Introductory Discovery Session: £49</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-cobalt flex-shrink-0" />
+                    <span>Memoirs, botanical art, family history &amp; stories</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-cobalt flex-shrink-0" />
+                    <span>Thoughtful gift option for adult children to purchase</span>
+                  </div>
+                </div>
               </div>
-              <div className="pt-2">
+
+              <div className="pt-4 flex flex-col sm:flex-row gap-3">
                 <Link
-                  to="/about"
-                  className="inline-flex items-center gap-2 text-cobalt font-semibold hover:text-cobalt-hover group"
+                  to="/pricing"
+                  className="flex-1 inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-navy hover:bg-navy-light text-white font-bold text-sm transition-colors text-center"
                 >
-                  <span>Learn more about our philosophy</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  View Pricing (from £49)
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+                <Link
+                  to="/book-for-someone"
+                  className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-sand/60 hover:bg-sand text-navy font-semibold text-sm transition-colors"
+                >
+                  <Gift className="w-4 h-4 mr-1.5 text-cobalt" />
+                  Gift for a Parent
                 </Link>
               </div>
             </div>
@@ -246,264 +292,157 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 3 — What Becomes Possible? */}
-      <section className="py-20 md:py-28 bg-ivory border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14 space-y-4">
-            <SectionHeading
-              eyebrow="Capabilities"
-              title="What becomes possible?"
-              description="Explore areas where artificial intelligence opens up practical everyday opportunities."
-            />
+      {/* What Could You Discover: Capabilities Grid */}
+      <section className="py-16 lg:py-24 bg-white border-b border-surface-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-cobalt">
+              Limitless Possibilities
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+              What Could You Discover?
+            </h2>
+            <p className="text-base text-body-muted leading-relaxed">
+              Whether you are an aspiring writer, a passionate gardener, a former engineer, or simply curious about the world, AI opens doors you never thought possible.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {capabilities.map((item, idx) => {
-              const IconComp = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white rounded-2xl overflow-hidden border border-surface-border shadow-sm hover:shadow-md hover:border-cobalt/40 transition-all duration-300 flex flex-col group"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-ivory-dark">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {capabilities.map((c, idx) => (
+              <div
+                key={idx}
+                className="bg-ivory rounded-3xl overflow-hidden border border-surface-border shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+              >
+                <div>
+                  <div className="h-44 overflow-hidden">
                     <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
+                      src={c.image}
+                      alt={c.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-md text-xs font-semibold text-navy flex items-center gap-1.5 shadow-sm">
-                      <IconComp className="w-3.5 h-3.5 text-cobalt" />
-                      <span>{item.tag}</span>
-                    </div>
                   </div>
-                  <div className="p-6 flex-grow flex flex-col justify-between space-y-3">
-                    <div>
-                      <h3 className="text-xl font-bold text-navy group-hover:text-cobalt transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2 text-sm sm:text-base text-body-muted leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                    <div className="pt-2">
-                      <Link
-                        to="/possibilities"
-                        className="text-xs font-semibold text-cobalt inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
-                      >
-                        <span>See practical examples</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                    </div>
+                  <div className="p-6 space-y-2">
+                    <h3 className="text-lg font-bold text-navy">{c.title}</h3>
+                    <p className="text-xs text-body leading-relaxed">{c.desc}</p>
                   </div>
                 </div>
-              );
-            })}
+                <div className="p-6 pt-0">
+                  <Link
+                    to={c.link}
+                    className="text-xs font-bold text-cobalt hover:underline inline-flex items-center gap-1"
+                  >
+                    Learn more <ChevronRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="text-center">
             <Link
               to="/possibilities"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-surface-border text-navy font-semibold hover:border-cobalt hover:text-cobalt transition-all shadow-sm"
+              className="inline-flex items-center text-sm font-bold text-cobalt hover:text-cobalt-hover gap-1.5"
             >
-              <span>Explore all possibilities in detail</span>
+              Explore all 10 areas of possibility in detail
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Section 4 — How It Works (Timeline) */}
-      <section className="py-20 md:py-28 bg-white border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="The Process"
-            title="Discovery starts with you."
-            description="Our structured approach meets you where you are, with no prior tech skills required."
-            align="center"
-            className="mb-16"
-          />
+      {/* How It Works Timeline */}
+      <section className="py-16 lg:py-24 bg-sand/40 border-b border-surface-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-cobalt">
+              Patient &amp; Supported
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy tracking-tight">
+              How a Session Works
+            </h2>
+          </div>
 
-          {/* Desktop Horizontal / Mobile Vertical Timeline */}
-          <div className="relative">
-            {/* Connecting line on desktop */}
-            <div
-              className="hidden lg:block absolute top-12 left-16 right-16 h-0.5 bg-surface-border"
-              aria-hidden="true"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-3xl p-8 border border-surface-border space-y-3 shadow-sm">
+              <span className="text-3xl font-extrabold text-cobalt">01</span>
+              <h3 className="text-lg font-bold text-navy">Bring Your Curiosity</h3>
+              <p className="text-xs sm:text-sm text-body leading-relaxed">
+                You do not need computer experience. Start with a question, a faded photo, an untold memory, or a hobby you've loved for decades.
+              </p>
+            </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
-              {steps.map((step, idx) => (
-                <div
-                  key={idx}
-                  className="relative bg-ivory rounded-2xl p-8 border border-surface-border hover:border-cobalt/30 transition-all flex flex-col space-y-4"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="w-12 h-12 rounded-xl bg-cobalt text-white flex items-center justify-center font-bold text-lg shadow-sm">
-                      {step.number}
-                    </span>
-                    <span className="text-xs font-bold uppercase tracking-wider text-body-muted">
-                      Step {idx + 1}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-navy pt-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-body-muted text-sm sm:text-base leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              ))}
+            <div className="bg-white rounded-3xl p-8 border border-surface-border space-y-3 shadow-sm">
+              <span className="text-3xl font-extrabold text-cobalt">02</span>
+              <h3 className="text-lg font-bold text-navy">Explore with Guidance</h3>
+              <p className="text-xs sm:text-sm text-body leading-relaxed">
+                Your patient facilitator operates the technology alongside you. Speak your thoughts naturally and watch stories and artwork come to life.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 border border-surface-border space-y-3 shadow-sm">
+              <span className="text-3xl font-extrabold text-cobalt">03</span>
+              <h3 className="text-lg font-bold text-navy">Keep What You Create</h3>
+              <p className="text-xs sm:text-sm text-body leading-relaxed">
+                Take away high-resolution printed keepsakes, poems, and stories to frame, display, or send to children and grandchildren.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section 5 — Our Experiences */}
-      <section className="py-20 md:py-28 bg-ivory border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Programmes"
-            title="Our experiences"
-            description="Whether through community events, regular groups or individual coaching, choose the pathway that suits you best."
-            className="mb-14 max-w-3xl"
-          />
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {experiences.map((exp, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl overflow-hidden border border-surface-border shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                  <img
-                    src={exp.image}
-                    alt={exp.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
-                  <div className="space-y-3">
-                    <h3 className="text-2xl font-bold text-navy group-hover:text-cobalt transition-colors">
-                      {exp.title}
-                    </h3>
-                    <p className="text-body-muted text-base leading-relaxed">
-                      {exp.description}
-                    </p>
-                  </div>
-                  <div className="pt-2">
-                    <Link
-                      to={exp.link}
-                      className="inline-flex items-center gap-2 text-cobalt font-semibold hover:text-cobalt-hover group-hover:gap-3 transition-all"
-                    >
-                      <span>{exp.cta}</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+      {/* Dual Final Conversion Panels */}
+      <section className="py-16 lg:py-24 bg-navy text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
+              Ready to Discover What's Possible?
+            </h2>
+            <p className="text-sm text-gray-300">
+              Get in touch today to schedule your session or request a care home proposal.
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Section 6 — Human at the Centre */}
-      <section className="py-20 md:py-28 bg-white border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <SectionHeading
-                eyebrow="Our Principle"
-                title="Technology should expand human possibility."
-              />
-              <div className="space-y-4 text-base sm:text-lg text-body leading-relaxed">
-                <p>
-                  We believe the most valuable use of AI is not simply doing things faster.
-                </p>
-                <p>
-                  It is helping people do things they previously couldn't, explore interests they hadn't considered and access capabilities that might otherwise have felt out of reach.
-                </p>
-                <p className="text-navy font-semibold text-lg">
-                  Our approach is personal, practical and centred on people.
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="p-8 rounded-3xl bg-navy-light/90 border border-softblue/30 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-softblue">
+                For Care Homes &amp; Providers
+              </span>
+              <h3 className="text-2xl font-bold text-white">Request a Care Home Proposal</h3>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Turnkey resident activity pilot events and recurring wellbeing programmes. Full CQC documentation provided.
+              </p>
               <div className="pt-2">
                 <Link
-                  to="/responsible-use"
-                  className="inline-flex items-center gap-2 text-cobalt font-semibold hover:text-cobalt-hover"
+                  to="/care-homes#proposal-form"
+                  className="inline-flex items-center px-6 py-3 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white font-bold text-sm shadow-md transition-colors"
                 >
-                  <span>Read our Safeguarding &amp; Responsible AI principles</span>
-                  <ArrowRight className="w-4 h-4" />
+                  Request Proposal
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
-                <img
-                  src={asset('/images/community/social-discovery.jpg')}
-                  alt="People collaborating and exploring ideas together"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 7 — For Organisations */}
-      <section className="py-20 md:py-28 bg-ivory border-b border-surface-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-6 order-2 lg:order-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-surface-border aspect-[4/3]">
-                <img
-                  src={asset('/images/organisations/community-venue.jpg')}
-                  alt="Community venue for hosting AI discovery workshops"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-              <SectionHeading
-                eyebrow="Institutional Partnerships"
-                title="Bring new possibilities to your community."
-              />
-              <div className="space-y-4 text-base sm:text-lg text-body leading-relaxed">
-                <p>
-                  We work with organisations interested in bringing practical, engaging AI experiences to the people they serve.
-                </p>
-                <p>
-                  Whether you're a community centre, library, housing organisation, charity or retirement community, we can explore a programme suited to your audience.
-                </p>
-              </div>
+            <div className="p-8 rounded-3xl bg-navy-light/90 border border-softblue/30 space-y-4">
+              <span className="text-xs font-bold uppercase tracking-wider text-softblue">
+                For Individuals &amp; Families
+              </span>
+              <h3 className="text-2xl font-bold text-white">Book a Personal Session</h3>
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                Individual discovery sessions start at £49. Available in-person across London or online nationwide.
+              </p>
               <div className="pt-2">
                 <Link
-                  to="/organisations"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-navy text-white font-semibold hover:bg-navy-light shadow-md transition-all duration-200"
+                  to="/pricing"
+                  className="inline-flex items-center px-6 py-3 rounded-xl bg-white text-navy font-bold text-sm hover:bg-gray-100 transition-colors shadow-md"
                 >
-                  <span>Explore organisational partnerships</span>
-                  <ArrowRight className="w-4 h-4" />
+                  Book Session (£49)
+                  <ArrowRight className="ml-2 w-4 h-4 text-cobalt" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Final CTA */}
-      <CTASection
-        headline="There's more you can do than you think."
-        copy="Discover what AI could make possible for you or your community."
-        primaryButtonText="Explore programmes"
-        primaryButtonLink="/programmes"
-        secondaryButtonText="Get in touch"
-        secondaryButtonLink="/contact"
-      />
     </>
   );
 }

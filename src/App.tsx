@@ -1,20 +1,25 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
+// The 16 Core Pages
 import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import ProgrammesPage from './pages/ProgrammesPage';
-import CommunityEventsPage from './pages/CommunityEventsPage';
-import GroupProgrammesPage from './pages/GroupProgrammesPage';
+import CareHomesPage from './pages/CareHomesPage';
+import CareHomeProgrammesPage from './pages/CareHomeProgrammesPage';
 import PersonalSessionsPage from './pages/PersonalSessionsPage';
-import OrganisationsPage from './pages/OrganisationsPage';
+import PricingPage from './pages/PricingPage';
+import BookForSomeonePage from './pages/BookForSomeonePage';
+import FamiliesAndCarersPage from './pages/FamiliesAndCarersPage';
 import PossibilitiesPage from './pages/PossibilitiesPage';
+import ExperiencesPage from './pages/ExperiencesPage';
+import HowItWorksPage from './pages/HowItWorksPage';
+import CommunityOrganisationsPage from './pages/CommunityOrganisationsPage';
 import FAQPage from './pages/FAQPage';
+import AboutPage from './pages/AboutPage';
+import ResponsibleAIPage from './pages/ResponsibleAIPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
-import ResponsibleUsePage from './pages/ResponsibleUsePage';
 
 function NotFoundPage() {
   return (
@@ -46,18 +51,32 @@ export default function App() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
+            {/* The 16 Main Site Pages */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/programmes" element={<ProgrammesPage />} />
-            <Route path="/community-events" element={<CommunityEventsPage />} />
-            <Route path="/group-programmes" element={<GroupProgrammesPage />} />
+            <Route path="/care-homes" element={<CareHomesPage />} />
+            <Route path="/care-home-programmes" element={<CareHomeProgrammesPage />} />
             <Route path="/personal-sessions" element={<PersonalSessionsPage />} />
-            <Route path="/organisations" element={<OrganisationsPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/book-for-someone" element={<BookForSomeonePage />} />
+            <Route path="/families-and-carers" element={<FamiliesAndCarersPage />} />
             <Route path="/possibilities" element={<PossibilitiesPage />} />
+            <Route path="/experiences" element={<ExperiencesPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/community-organisations" element={<CommunityOrganisationsPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/responsible-ai" element={<ResponsibleAIPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/responsible-use" element={<ResponsibleUsePage />} />
+
+            {/* Backwards Compatibility / Legacy Aliases */}
+            <Route path="/responsible-use" element={<Navigate to="/responsible-ai" replace />} />
+            <Route path="/organisations" element={<Navigate to="/community-organisations" replace />} />
+            <Route path="/community-events" element={<Navigate to="/community-organisations" replace />} />
+            <Route path="/group-programmes" element={<Navigate to="/care-home-programmes" replace />} />
+            <Route path="/programmes" element={<Navigate to="/care-homes" replace />} />
+
+            {/* Catch-all 404 */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

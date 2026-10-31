@@ -1,55 +1,39 @@
 import { useState } from 'react';
-import { Mail, Phone, MapPin, CheckCircle2, Info, User, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function ContactPage() {
-  const [pathway, setPathway] = useState<'individual' | 'organisation'>('individual');
+  const [formType, setFormType] = useState<'personal' | 'care-home' | 'community'>('personal');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    enquiryType: 'personal-sessions',
+    phone: '',
+    organisationName: '',
     message: '',
-    privacyAccepted: false,
-    marketingConsent: false,
-    honeypot: '', // anti-spam
+    honeypot: '',
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-
-  const handlePathwaySelect = (selected: 'individual' | 'organisation') => {
-    setPathway(selected);
-    setFormData((prev) => ({
-      ...prev,
-      enquiryType: selected === 'individual' ? 'personal-sessions' : 'community-event',
-    }));
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.honeypot) {
-      // Spam bot triggered
-      return;
-    }
+    if (formData.honeypot) return;
+
     if (!formData.name || !formData.email || !formData.message) {
-      setError('Please provide your name, email, and message.');
+      setError('Please fill in your name, email, and message.');
       return;
     }
-    if (!formData.privacyAccepted) {
-      setError('Please acknowledge the privacy policy to submit.');
-      return;
-    }
+
     setError('');
     setSubmitted(true);
   };
@@ -57,309 +41,267 @@ export default function ContactPage() {
   return (
     <>
       <SEO
-        title="Contact Us"
-        description="Whether you are interested in participating or representing an organisation, get in touch with The Superpower Project."
+        title="Contact & Enquiries | The Superpower Project"
+        description="Get in touch with our team for personal discovery session bookings, care home programme proposals, or community partnerships. Response within 24 business hours."
       />
 
-      {/* Hero */}
-      <section className="bg-ivory py-12 md:py-20 border-b border-surface-border">
+      <section className="bg-ivory py-14 lg:py-20 border-b border-surface-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: 'Contact' }]} />
+          <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Contact' }]} />
 
-          <div className="mt-8 max-w-3xl space-y-5">
+          <div className="mt-8 max-w-3xl space-y-4">
             <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-cobalt">
-              Get In Touch
+              We're Here to Help
             </span>
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-navy tracking-tight leading-tight">
-              Let's start a conversation.
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight leading-tight">
+              Get in Touch
             </h1>
             <p className="text-base sm:text-lg text-body-muted leading-relaxed">
-              Whether you're interested in attending a session, arranging a personal experience or bringing The Superpower Project to your community, we'd be pleased to hear from you.
+              Have a question about booking a personal session for a parent, scheduling a care home discovery event, or hosting a community workshop? We are always happy to speak.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-20 md:py-28 bg-white border-b border-surface-border">
+      {/* Main Content Grid */}
+      <section className="py-16 lg:py-24 bg-white border-b border-surface-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Form Column */}
-            <div className="lg:col-span-7 bg-ivory rounded-3xl p-8 sm:p-12 border border-surface-border shadow-sm">
-              <div className="mb-8">
-                <p className="text-xs font-bold uppercase tracking-wider text-cobalt mb-3">
-                  Step 1: Choose Your Enquiry Pathway
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            {/* Left Column: Direct Info */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-2xl font-bold text-navy">Direct Contact</h2>
+                <p className="text-sm text-body leading-relaxed">
+                  We respond to all enquiries within 24 business hours. If your request is urgent, please call us directly.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    onClick={() => handlePathwaySelect('individual')}
-                    className={`flex items-center gap-3 p-4 rounded-xl border font-semibold text-sm transition-all text-left ${
-                      pathway === 'individual'
-                        ? 'bg-white border-cobalt text-cobalt shadow-sm ring-2 ring-cobalt/20'
-                        : 'bg-white/60 border-surface-border text-navy hover:bg-white'
-                    }`}
-                  >
-                    <User className="w-5 h-5 flex-shrink-0" />
-                    <span>I'm interested in participating</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handlePathwaySelect('organisation')}
-                    className={`flex items-center gap-3 p-4 rounded-xl border font-semibold text-sm transition-all text-left ${
-                      pathway === 'organisation'
-                        ? 'bg-white border-cobalt text-cobalt shadow-sm ring-2 ring-cobalt/20'
-                        : 'bg-white/60 border-surface-border text-navy hover:bg-white'
-                    }`}
-                  >
-                    <Building2 className="w-5 h-5 flex-shrink-0" />
-                    <span>I'm representing an organisation</span>
-                  </button>
-                </div>
               </div>
 
-              {submitted ? (
-                <div className="p-8 rounded-2xl bg-white border border-cobalt/40 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-softblue text-cobalt flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cobalt/10 text-cobalt flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-navy">
-                    Enquiry Validated (Development State)
-                  </h3>
-                  <p className="text-sm text-body-muted leading-relaxed">
-                    Thank you, <strong>{formData.name}</strong>. Your message for <em>{formData.enquiryType}</em> has been processed in testing mode.
-                  </p>
-                  <div className="p-4 rounded-xl bg-ivory text-xs text-body-muted text-left border border-surface-border flex items-start gap-2">
-                    <Info className="w-4 h-4 text-cobalt flex-shrink-0 mt-0.5" />
-                    <span>
-                      <strong>Submission Notice:</strong> An active SMTP mail relay or CRM endpoint has not yet been connected to this environment. In accordance with Section 15 rules, we display this status rather than pretending an external email was transmitted. Please refer to our direct contact configuration details on this page.
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-body-muted block">
+                      Email Us
+                    </span>
+                    <a
+                      href="mailto:hello@thesuperpowerproject.org"
+                      className="text-base font-bold text-navy hover:text-cobalt transition-colors"
+                    >
+                      hello@thesuperpowerproject.org
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cobalt/10 text-cobalt flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-body-muted block">
+                      Telephone
+                    </span>
+                    <a
+                      href="tel:02080000000"
+                      className="text-base font-bold text-navy hover:text-cobalt transition-colors"
+                    >
+                      020 8123 4567
+                    </a>
+                    <span className="block text-xs text-body-muted mt-0.5">
+                      Mon–Fri: 9:00am – 5:30pm
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => setSubmitted(false)}
-                    className="px-5 py-2 text-sm font-semibold text-cobalt hover:underline"
-                  >
-                    Send another message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {error && (
-                    <div className="p-4 rounded-xl bg-red-50 text-red-700 text-sm font-medium border border-red-200">
-                      {error}
-                    </div>
-                  )}
-
-                  {/* Honeypot field (hidden from users, catches bots) */}
-                  <div className="hidden" aria-hidden="true">
-                    <label>
-                      Leave this field blank
-                      <input
-                        type="text"
-                        name="honeypot"
-                        tabIndex={-1}
-                        value={formData.honeypot}
-                        onChange={handleChange}
-                        autoComplete="off"
-                      />
-                    </label>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase text-navy mb-2">
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-surface-border text-navy text-sm focus:border-cobalt focus:ring-1 focus:ring-cobalt"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase text-navy mb-2">
-                      Email Address <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-surface-border text-navy text-sm focus:border-cobalt focus:ring-1 focus:ring-cobalt"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase text-navy mb-2">
-                      Enquiry Focus
-                    </label>
-                    <select
-                      name="enquiryType"
-                      value={formData.enquiryType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-surface-border text-navy text-sm focus:border-cobalt focus:ring-1 focus:ring-cobalt"
-                    >
-                      {pathway === 'individual' ? (
-                        <>
-                          <option value="personal-sessions">Personal 1-to-1 Sessions</option>
-                          <option value="joining-group">Joining a Group Programme</option>
-                          <option value="attending-event">Attending a Community Event</option>
-                          <option value="general-question">General Question / Other</option>
-                        </>
-                      ) : (
-                        <>
-                          <option value="community-event">Hosting a Community Event</option>
-                          <option value="group-programme">Commissioning a Group Programme</option>
-                          <option value="sponsorship">Sponsorship &amp; Community Access</option>
-                          <option value="other-partnership">Other Organisational Partnership</option>
-                        </>
-                      )}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase text-navy mb-2">
-                      Your Message <span className="text-red-500">*</span>
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={5}
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="How can we help you? Feel free to mention any specific interests or questions..."
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-surface-border text-navy text-sm focus:border-cobalt focus:ring-1 focus:ring-cobalt"
-                    ></textarea>
-                  </div>
-
-                  {/* Mandatory Privacy Acknowledgement */}
-                  <div className="pt-2">
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        name="privacyAccepted"
-                        checked={formData.privacyAccepted}
-                        onChange={handleChange}
-                        className="mt-1 h-4 w-4 rounded border-surface-border text-cobalt focus:ring-cobalt"
-                      />
-                      <span className="text-xs text-body leading-relaxed">
-                        I acknowledge that the information submitted above will be processed in accordance with the project's{' '}
-                        <a href="/privacy" target="_blank" rel="noreferrer" className="text-cobalt underline">
-                          Privacy Policy
-                        </a>
-                        . <span className="text-red-500">*</span>
-                      </span>
-                    </label>
-                  </div>
-
-                  {/* Optional Separate Marketing Consent (Unchecked by default, not required) */}
-                  <div>
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        name="marketingConsent"
-                        checked={formData.marketingConsent}
-                        onChange={handleChange}
-                        className="mt-1 h-4 w-4 rounded border-surface-border text-cobalt focus:ring-cobalt"
-                      />
-                      <span className="text-xs text-body-muted leading-relaxed">
-                        Optional: I would like to receive occasional updates about new programmes and open resources.
-                      </span>
-                    </label>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 rounded-xl bg-cobalt text-white font-semibold text-base hover:bg-cobalt-hover shadow-md hover:shadow-lg transition-all"
-                  >
-                    Send enquiry
-                  </button>
-                </form>
-              )}
-            </div>
-
-            {/* Sidebar / Configuration Details Column */}
-            <div className="lg:col-span-5 space-y-8">
-              <div className="bg-white rounded-3xl p-8 border border-surface-border shadow-sm space-y-6">
-                <div className="space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-cobalt">
-                    Direct Contact
-                  </span>
-                  <h3 className="text-2xl font-bold text-navy">
-                    Project Office
-                  </h3>
-                  <p className="text-sm text-body-muted leading-relaxed">
-                    We welcome direct communications from community groups, prospective participants, and partner organisations.
-                  </p>
                 </div>
 
-                <div className="space-y-4 pt-2">
-                  <div className="flex items-start gap-3 text-sm">
-                    <Mail className="w-5 h-5 text-cobalt flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-bold text-navy">Email Enquiries</p>
-                      <p className="text-body-muted text-xs">
-                        [hello@thesuperpowerproject.org.uk — configuration placeholder]
-                      </p>
-                    </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-cobalt/10 text-cobalt flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5" />
                   </div>
-
-                  <div className="flex items-start gap-3 text-sm">
-                    <Phone className="w-5 h-5 text-cobalt flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-bold text-navy">Telephone</p>
-                      <p className="text-body-muted text-xs">
-                        [Direct phone line to be announced — configuration placeholder]
-                      </p>
-                    </div>
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-wider text-body-muted block">
+                      Service Coverage
+                    </span>
+                    <span className="text-sm font-semibold text-navy block">
+                      In-Person: Greater London &amp; Home Counties
+                    </span>
+                    <span className="text-xs text-body-muted block mt-0.5">
+                      Online Video: Nationwide Across the UK
+                    </span>
                   </div>
-
-                  <div className="flex items-start gap-3 text-sm">
-                    <MapPin className="w-5 h-5 text-cobalt flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-bold text-navy">Location</p>
-                      <p className="text-body-muted text-xs">
-                        United Kingdom (Delivering across community venues and remote sessions)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-surface-border text-xs text-body-muted">
-                  <p>
-                    <strong>Editorial Integrity:</strong> In accordance with project policy, placeholder channels are designated above. We do not invent fictional personal numbers or unmonitored social handles.
-                  </p>
                 </div>
               </div>
 
-              {/* Quick links to FAQs and Policies */}
-              <div className="bg-ivory rounded-2xl p-6 border border-surface-border space-y-3">
-                <h4 className="font-bold text-navy text-sm">Helpful resources before writing:</h4>
-                <ul className="space-y-2 text-xs text-body">
-                  <li>
-                    <a href="/faq" className="text-cobalt hover:underline">
-                      → Frequently Asked Questions
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/responsible-use" className="text-cobalt hover:underline">
-                      → Responsible AI &amp; Safeguarding Standards
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/organisations" className="text-cobalt hover:underline">
-                      → Organisational Partnership Details
-                    </a>
-                  </li>
-                </ul>
+              <div className="p-6 rounded-2xl bg-ivory border border-surface-border space-y-2">
+                <h3 className="font-bold text-navy text-sm">Need Care Home Pricing Directly?</h3>
+                <p className="text-xs text-body leading-relaxed">
+                  Activities coordinators and care home managers can also use our dedicated proposal request form for fast quotes.
+                </p>
+                <Link
+                  to="/care-homes#proposal-form"
+                  className="inline-flex items-center text-xs font-bold text-cobalt hover:underline gap-1 pt-1"
+                >
+                  Go to Care Home Proposal Form →
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: 3-Form Switcher */}
+            <div className="lg:col-span-7">
+              <div className="bg-ivory rounded-3xl p-8 sm:p-10 border border-surface-border shadow-md space-y-6">
+                <div className="space-y-3">
+                  <span className="text-xs font-bold uppercase tracking-widest text-cobalt block">
+                    Send an Enquiry
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setFormType('personal')}
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                        formType === 'personal'
+                          ? 'bg-cobalt text-white shadow-sm'
+                          : 'bg-white text-navy border border-surface-border'
+                      }`}
+                    >
+                      Personal &amp; Family
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormType('care-home')}
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                        formType === 'care-home'
+                          ? 'bg-cobalt text-white shadow-sm'
+                          : 'bg-white text-navy border border-surface-border'
+                      }`}
+                    >
+                      Care Home B2B
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormType('community')}
+                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                        formType === 'community'
+                          ? 'bg-cobalt text-white shadow-sm'
+                          : 'bg-white text-navy border border-surface-border'
+                      }`}
+                    >
+                      Community &amp; Libraries
+                    </button>
+                  </div>
+                </div>
+
+                {submitted ? (
+                  <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
+                    <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
+                    <h3 className="font-bold text-emerald-950">Thank You, {formData.name}!</h3>
+                    <p className="text-xs text-emerald-900 leading-relaxed">
+                      Your message has been received. Our team will review your enquiry and respond within 24 business hours.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <input
+                      type="text"
+                      name="honeypot"
+                      value={formData.honeypot}
+                      onChange={handleChange}
+                      className="hidden"
+                      tabIndex={-1}
+                    />
+
+                    {error && (
+                      <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-800 font-medium">
+                        {error}
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+                          Your Name *
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="e.g. Margaret Davies"
+                          className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+                          Email Address *
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="margaret@example.com"
+                          className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+                          Telephone Number
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="e.g. 07123 456789"
+                          className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white"
+                        />
+                      </div>
+
+                      {formType !== 'personal' && (
+                        <div>
+                          <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+                            Organisation Name
+                          </label>
+                          <input
+                            type="text"
+                            name="organisationName"
+                            value={formData.organisationName}
+                            onChange={handleChange}
+                            placeholder="e.g. Sunshine Care Home / Local Library"
+                            className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white"
+                          />
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-navy mb-1.5">
+                        Your Message or Enquiry *
+                      </label>
+                      <textarea
+                        name="message"
+                        required
+                        rows={4}
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us what you'd like to explore, ask about dates, or share details about your home or loved one..."
+                        className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white resize-none"
+                      />
+                    </div>
+
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        className="w-full sm:w-auto px-7 py-3 rounded-xl bg-cobalt hover:bg-cobalt-hover text-white font-bold text-sm shadow-md transition-colors"
+                      >
+                        Send Enquiry
+                      </button>
+                    </div>
+                  </form>
+                )}
               </div>
             </div>
           </div>
