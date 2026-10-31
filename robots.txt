@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thesuperpowerproject.org.uk/sitemap.xml
