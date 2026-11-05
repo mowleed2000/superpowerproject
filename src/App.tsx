@@ -20,6 +20,9 @@ import AboutPage from './pages/AboutPage';
 import ResponsibleAIPage from './pages/ResponsibleAIPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
+import CouncilsPage from './pages/CouncilsPage';
+import BlogPage from './pages/BlogPage';
+import BlogArticlePage from './pages/BlogArticlePage';
 
 function NotFoundPage() {
   return (
@@ -67,6 +70,9 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/responsible-ai" element={<ResponsibleAIPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/councils" element={<CouncilsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogArticlePage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
 
             {/* Backwards Compatibility / Legacy Aliases */}

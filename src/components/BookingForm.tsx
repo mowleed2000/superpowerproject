@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle2, Info, User, Heart, Sparkles } from 'lucide-react';
 import { PRICING_PLANS } from '../config/pricing';
+import { sendEnquiry } from '../utils/enquiry';
+import EnquiryConfigNotice from './EnquiryConfigNotice';
 
 interface BookingFormProps {
   initialPlanId?: string;
@@ -31,6 +34,7 @@ export default function BookingForm({
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [sending, setSending] = useState(false);
 
   const activePlan = PRICING_PLANS.find((p) => p.id === selectedPlan) || PRICING_PLANS[0];
 
@@ -46,7 +50,7 @@ export default function BookingForm({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.honeypot) return;
 
@@ -64,7 +68,15 @@ export default function BookingForm({
     }
 
     setError('');
-    setSubmitted(true);
+    setSending(true);
+    try {
+      await sendEnquiry({ formType: 'personal-booking', bookingFor, plan: activePlan.name, price: activePlan.formattedPrice, ...formData });
+      setSubmitted(true);
+    } catch (submissionError) {
+      setError(submissionError instanceof Error ? submissionError.message : 'Your request could not be sent. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -85,11 +97,11 @@ export default function BookingForm({
           <div className="flex items-start gap-2">
             <Info className="w-4 h-4 text-cobalt flex-shrink-0 mt-0.5" />
             <p>
-              <strong>Next Steps:</strong> We will review your preferred schedule and reply within 1 business day to confirm date, time, and session arrangements.
+              Your request was sent. Any next steps will be confirmed by the team.
             </p>
           </div>
           <p className="text-xs text-gray-500 pl-6">
-            No payment is taken right now. Invoicing is settled securely once dates are agreed.
+            No payment has been taken through this form.
           </p>
         </div>
         <button
@@ -105,6 +117,7 @@ export default function BookingForm({
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-6 sm:p-10 border border-surface-border shadow-md space-y-6">
+      <EnquiryConfigNotice />
       {error && (
         <div className="p-4 rounded-xl bg-red-50 text-red-700 text-sm font-medium border border-red-200">
           {error}
@@ -300,8 +313,8 @@ export default function BookingForm({
             onChange={handleChange}
             className="w-full px-3.5 py-2.5 rounded-lg bg-ivory border border-surface-border text-sm text-navy focus:border-cobalt focus:ring-1 focus:ring-cobalt"
           >
-            <option value="in-person">In-Person (Home visit in Greater London / Home Counties)</option>
-            <option value="online">Online Video Session (Zoom / Meet)</option>
+            <option value="in-person">In-person (location and travel costs to be confirmed)</option>
+            <option value="online">Online video session (platform to be agreed)</option>
             <option value="flexible">Flexible / Either</option>
           </select>
         </div>
@@ -346,9 +359,9 @@ export default function BookingForm({
           />
           <span className="text-xs text-body-muted leading-relaxed">
             I agree that the details supplied above may be used to process this session booking in accordance with the{' '}
-            <a href="/privacy" className="text-cobalt underline" target="_blank" rel="noreferrer">
+            <Link to="/privacy" className="text-cobalt underline" target="_blank" rel="noreferrer">
               Privacy Policy
-            </a>
+            </Link>
             . <span className="text-red-500">*</span>
           </span>
         </label>
@@ -358,7 +371,7 @@ export default function BookingForm({
         type="submit"
         className="w-full py-4 rounded-xl bg-cobalt text-white font-bold text-base hover:bg-cobalt-hover shadow-md hover:shadow-lg transition-all"
       >
-        Submit Booking Request — {activePlan.name} ({activePlan.formattedPrice})
+        {sending ? 'Sending…' : `Submit Booking Request — ${activePlan.name} (${activePlan.formattedPrice})`}
       </button>
 
       <p className="text-xs text-center text-body-muted">
