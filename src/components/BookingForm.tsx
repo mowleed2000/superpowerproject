@@ -281,7 +281,6 @@ export default function BookingForm({
               required
               value={formData.email}
               onChange={handleChange}
-              placeholder="jane@example.com"
               className="w-full px-3.5 py-2.5 rounded-lg bg-ivory border border-surface-border text-sm text-navy focus:border-cobalt focus:ring-1 focus:ring-cobalt"
             />
           </div>
@@ -294,7 +293,6 @@ export default function BookingForm({
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              placeholder="07123 456789"
               className="w-full px-3.5 py-2.5 rounded-lg bg-ivory border border-surface-border text-sm text-navy focus:border-cobalt focus:ring-1 focus:ring-cobalt"
             />
           </div>

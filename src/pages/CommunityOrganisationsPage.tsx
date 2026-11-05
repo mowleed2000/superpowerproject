@@ -209,7 +209,6 @@ export default function CommunityOrganisationsPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="david@camden.gov.uk"
                       className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white"
                     />
                   </div>
@@ -223,7 +222,6 @@ export default function CommunityOrganisationsPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="e.g. 020 7974 4444"
                       className="w-full px-4 py-2.5 rounded-xl border border-surface-border text-sm outline-none focus:ring-2 focus:ring-cobalt bg-white"
                     />
                   </div>
