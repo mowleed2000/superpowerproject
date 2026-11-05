@@ -21,7 +21,7 @@ export default function PricingPage() {
     <>
       <SEO
         title="Pricing & Booking | Personal AI Sessions | The Superpower Project"
-        description="Transparent pricing for personal 1-to-1 AI discovery sessions. Choose single sessions or multi-session packages. In-person across London & online nationwide."
+        description="Listed pricing for one-to-one AI learning sessions for older adults, with options for a single session or a small series."
       />
 
       {/* Hero */}
@@ -33,13 +33,13 @@ export default function PricingPage() {
           />
 
           <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-cobalt block">
-            Transparent Pricing • Zero Hidden Costs
+            Personal session pricing
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-navy tracking-tight">
             Personal Sessions &amp; Packages
           </h1>
           <p className="text-base sm:text-lg text-body-muted max-w-2xl mx-auto leading-relaxed">
-            All sessions include patient 1-to-1 guidance, full access to leading AI tools, all necessary hardware, and takeaway summaries of everything you create.
+            These listed prices cover the session time shown. Discuss location, format, access needs and any additional costs before confirming a booking.
           </p>
 
           <div className="pt-2 flex items-center justify-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200/80 rounded-full px-4 py-1.5 w-fit mx-auto">
@@ -134,7 +134,7 @@ export default function PricingPage() {
                 <span>In-Person Delivery</span>
               </div>
               <p className="text-xs text-body leading-relaxed">
-                Available throughout Greater London and the Home Counties. The facilitator arrives at your home or chosen quiet setting with all necessary devices, tablets, and mobile connection.
+                In-person availability depends on location. Confirm any travel costs and practical arrangements before booking.
               </p>
             </div>
 
@@ -144,7 +144,7 @@ export default function PricingPage() {
                 <span>Online Video Delivery</span>
               </div>
               <p className="text-xs text-body leading-relaxed">
-                Available nationwide across the UK via a simple, one-click video link (no passwords or software installs required). We can do an audio telephone check first to ensure you are comfortable.
+                An online format may be possible. Discuss the preferred platform, device and support needed before arranging a session.
               </p>
             </div>
 
@@ -154,7 +154,7 @@ export default function PricingPage() {
                 <span>Flexible Rescheduling</span>
               </div>
               <p className="text-xs text-body leading-relaxed">
-                Life happens. If you or your relative feel unwell or need to change dates, you can reschedule freely up to 48 hours prior with zero fees.
+                Cancellation and rescheduling terms will be shared when the session is arranged.
               </p>
             </div>
           </div>

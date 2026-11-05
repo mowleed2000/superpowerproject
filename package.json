@@ -10,7 +10,7 @@
     "postbuild": "node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html'); require('fs').copyFileSync('dist/index.html', 'index.html'); require('fs').copyFileSync('dist/404.html', '404.html'); require('fs').cpSync('dist/assets', 'assets', {recursive: true}); require('fs').cpSync('dist/images', 'images', {recursive: true})\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "lint": "oxlint",
+    "lint": "oxlint src",
     "preview": "vite preview"
   },
   "dependencies": {
